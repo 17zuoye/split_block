@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from open_sources.etl_utils import is_regular_word, word_regexp, alphabet_regexp, LazyData
+from etl_utils import is_regular_word, word_regexp, alphabet_regexp, ld
 import re
 
-ld = LazyData()
 
 class SplitBlock:
     """

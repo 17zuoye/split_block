@@ -6,7 +6,7 @@ import math
 from .item import SplitBlock
 from .group_ext import SplitBlockGroupExt
 from .group_chapped import SplitBlockGroupChapped
-from open_sources.etl_utils import alphabet_regexp, is_regular_word
+from etl_utils import alphabet_regexp, is_regular_word
 
 
 class SplitBlockGroup(list, SplitBlockGroupExt, SplitBlockGroupChapped):
