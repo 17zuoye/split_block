@@ -11,7 +11,7 @@ class SplitBlockGroupChapped(object):
 
         current_chapped_group = []
         for idx1, sb1 in enumerate(self):
-            if sb1.is_letter and (not sb1.is_regular) and z(sb1.n_sb) and sb1.n_sb.is_blank:
+            if sb1.is_letter and (not sb1.is_regular):
                 current_chapped_group.append(sb1)
 
             if len(current_chapped_group) and sb1.is_blank:
