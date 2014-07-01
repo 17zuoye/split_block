@@ -15,6 +15,12 @@ class SplitBlockGroupChapped(object):
                                   (len(sb1) <= 5)) # maybe combined word
 
         for idx1, sb1 in enumerate(self):
+            # compact with "A. s un  B.no s e C.fa c e  D.ri c e"
+            if len(current_chapped_group) and sb1.is_letter and (sb1.string or " ")[0].isupper():
+                chapped_groups.append(current_chapped_group)
+                current_chapped_group = []
+                continue
+
             if is_candidate(sb1):
                 current_chapped_group.append(sb1)
 
