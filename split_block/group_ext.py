@@ -3,10 +3,12 @@
 from collections import defaultdict
 from .item import SplitBlock
 
-# a short alias
-def z(item): return isinstance(item, SplitBlock)
-
 class SplitBlockGroupExt():
+
+    @classmethod
+    def z(cls, item):
+        """ a short alias """
+        return isinstance(item, SplitBlock)
 
     def fill__patterns_vs_word_groups(self, candidate_patterns_vs_word_groups1):
         for candidate_pattern_with_str1 in candidate_patterns_vs_word_groups1:
@@ -53,6 +55,8 @@ class SplitBlockGroupExt():
 
 
     def generate__possible_patterns_map(self, params_strs1):
+        z = SplitBlockGroupExt.z
+
         is_count_totally_match = self.original_fillblank_length == len(params_strs1.original_strs)
         is_count_greatly_match = self.original_fillblank_length <= len(params_strs1.original_strs)
 

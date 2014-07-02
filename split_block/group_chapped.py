@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from .item import SplitBlock
-from .group_ext import z
 
 class SplitBlockGroupChapped(object):
 
