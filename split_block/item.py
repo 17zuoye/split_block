@@ -61,6 +61,9 @@ class SplitBlock:
         if type(another) is not type(self): return False
         return (self.string == another.string) and (self.pos_begin == another.pos_begin)
 
+    def utf8low(self):
+        return self.string.strip().decode("UTF-8").lower()
+
     def relative_to_current(self, idx):
         if idx == 0: return self
 
@@ -76,6 +79,7 @@ class SplitBlock:
                     return None
             return current_split_block
         return get_that_split_block(idx)
+    r_sb = relative_to_current
 
     def siblings_to_item(self, another):
         method = 'n_sb' if (self.pos_begin < another.pos_begin) else 'p_sb'
