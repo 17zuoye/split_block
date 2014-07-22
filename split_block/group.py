@@ -6,7 +6,7 @@ import math
 from .item import SplitBlock
 from .group_ext import SplitBlockGroupExt
 from .group_chapped import SplitBlockGroupChapped
-from etl_utils import alphabet_regexp, is_regular_word
+from etl_utils import regexp, is_regular_word
 
 
 class SplitBlockGroup(list, SplitBlockGroupExt, SplitBlockGroupChapped):
@@ -90,7 +90,7 @@ class SplitBlockGroup(list, SplitBlockGroupExt, SplitBlockGroupChapped):
             # init variables
             current_type = None
             if (char1 == ' ') or (char1 is None): current_type = 'blank'
-            current_type = current_type or (alphabet_regexp.match(char1) and 'letter')
+            current_type = current_type or (regexp.alphabet.match(char1) and 'letter')
             current_type = current_type or "other"
             # print "[char1]", char1, "[current_type]", current_type
 
@@ -135,7 +135,7 @@ class SplitBlockGroup(list, SplitBlockGroupExt, SplitBlockGroupChapped):
         for idx, sb in enumerate(sbs):
             is_front_and_end_letters = True
             if (idx > 0) and (idx <= (len(sbs) - 1)):
-                is_front_and_end_letters = bool(alphabet_regexp.match(str(sb.p_sb or "") + str(sb.n_sb or "")))
+                is_front_and_end_letters = bool(regexp.alphabet.match(str(sb.p_sb or "") + str(sb.n_sb or "")))
 
             if sb._type == 'blank':
                 if ( \

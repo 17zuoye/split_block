@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from etl_utils import is_regular_word, word_regexp, alphabet_regexp
+from etl_utils import is_regular_word, regexp
 from etl_utils.lazy_data import ld
 import re
 
@@ -33,10 +33,10 @@ class SplitBlock:
                                         (self.string in ["bidden", "instr"]) \
                                     )
 
-        self.is_chars          = bool(word_regexp.match(self.string))
+        self.is_chars          = bool(regexp.word.match(self.string))
         first_char             = len(self.string) and list(self.string)[0] or ""
         self.is_upper          = bool(re.compile("[A-Z]").match(first_char))
-        self.is_none_letter    = not alphabet_regexp.match(first_char)
+        self.is_none_letter    = not regexp.alphabet.match(first_char)
         self.is_postfix        = (not self.is_upper) and (not self.is_none_letter)
         self.is_standalone     = (self.string == 'a') or ((len(self.string) >= 2) and self.is_regular or self.is_none_letter)
 
