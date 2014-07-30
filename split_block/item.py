@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from etl_utils import is_regular_word, regexp
-from etl_utils.lazy_data import ld
+from etl_utils import is_regular_word, regexp, ld
 import re
 
 

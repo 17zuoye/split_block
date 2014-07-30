@@ -69,7 +69,7 @@ class SplitBlockGroupExt():
             if params_strs1.has_merged_at_least_one and (not self.is_all_broken()):
                     possible_patterns_map[sb1].append([None])
 
-            if (sb1.p_sb is None) and sb1.n_sb.is_candidate:
+            if (sb1.p_sb is None) and z(sb1.n_sb) and sb1.n_sb.is_candidate:
                     possible_patterns_map[sb1].append([None, sb1.n_sb])
 
             if z(sb1.p_sb) and sb1.p_sb.is_candidate:
