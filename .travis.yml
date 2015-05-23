@@ -6,7 +6,7 @@ env:
   matrix:
     - TOXENV=py27
 
-sudo: false
+sudo: true
 
 cache:
   - $HOME/.pip-cache
