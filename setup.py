@@ -15,6 +15,9 @@ setup(
     platforms='any',
     install_requires=[
         'etl_utils',
+        'nltk',
+        'pyenchant',
+        'marisa_trie',
     ],
     classifiers=[
         'Intended Audience :: Developers',

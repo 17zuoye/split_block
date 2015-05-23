@@ -12,7 +12,8 @@ class SplitBlock:
     """
 
     def __init__(self, str1, _type, pos_begin, pos_end, pre_split_block=None, next_split_block=None):
-        if isinstance(str1, unicode): str1 = str1.encode("UTF-8")
+        if isinstance(str1, unicode):
+            str1 = str1.encode("UTF-8")
 
         self.string            = str1
         self.length            = len(str1)
@@ -24,12 +25,12 @@ class SplitBlock:
         self.is_enough_chars   = len(self.string) > 3
         self.is_regular        = is_regular_word(self.string)
         self.is_abc            = unicode(self.string, "UTF-8") in ld.two_length_words
-        self.is_candidate      = self.is_letter and ( \
-                                        #((not self.is_enough_chars) and (not self.is_regular)) or \
-                                        (not self.is_enough_chars) or \
-                                        (not self.is_regular) or \
+        self.is_candidate      = self.is_letter and (
+                                        #((not self.is_enough_chars) and (not self.is_regular)) or
+                                        (not self.is_enough_chars) or
+                                        (not self.is_regular) or
                                         # maybe add Trie
-                                        (self.string in ["bidden", "instr"]) \
+                                        (self.string in ["bidden", "instr"])
                                     )
 
         self.is_chars          = bool(regexp.word.match(self.string))
@@ -49,22 +50,29 @@ class SplitBlock:
 
     def __repr__(self):
         s1 = self.string.decode("UTF-8")
-        return (("<<<\"%s\", [%s : %s : %s-%s%s]>>>") % (s1, self._type, \
+        return (("<<<\"%s\", [%s : %s : %s-%s%s]>>>") % (s1, self._type,
                 self.length, self.pos_begin, self.pos_end, ({True:" can_fill",False:""}[self.can_fill]))).encode("UTF-8")
 
-    def __hash__(self): return hash(str(self.length) + str(self.pos_begin) + str(self.pos_end)) % 1000000
-    def __str__(self): return self.string
-    def __len__(self): return len(str(self))
+    def __hash__(self):
+        return hash(str(self.length) + str(self.pos_begin) + str(self.pos_end)) % 1000000
+
+    def __str__(self):
+        return self.string
+
+    def __len__(self):
+        return len(str(self))
 
     def __eq__(self, another):
-        if type(another) is not type(self): return False
+        if type(another) is not type(self):
+            return False
         return (self.string == another.string) and (self.pos_begin == another.pos_begin)
 
     def utf8low(self):
         return self.string.strip().decode("UTF-8").lower()
 
     def relative_to_current(self, idx):
-        if idx == 0: return self
+        if idx == 0:
+            return self
 
         def get_that_split_block(idx):
             current_split_block = self

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 class Apart(list):
     """
     Consist of items, used to compare between Aparts
@@ -9,7 +10,8 @@ class Apart(list):
     str_lambda = lambda list1: ''.join(sorted([str(hash(i1)) for i1 in list1]))
 
     def __eq__(self, another):
-        if type(another) is not type(self): return False
+        if type(another) is not type(self):
+            return False
 
         return Apart.str_lambda(self) == Apart.str_lambda(another)
 

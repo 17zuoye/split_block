@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
+import os
+import sys
 root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, root_dir)
 
 import unittest
 
-from split_block import SplitBlockGroup, SplitBlock
+from split_block import SplitBlockGroup
+
 
 class TestSplitBlock(unittest.TestCase):
 
@@ -20,4 +22,5 @@ class TestSplitBlock(unittest.TestCase):
         self.assertTrue(SplitBlockGroup.z(sb1))
 
 
-if __name__ == '__main__': unittest.main()
+if __name__ == '__main__':
+    unittest.main()
