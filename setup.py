@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='split_block',
-    version='0.0.1',
+    version='0.0.2',
     url='http://github.com/mvj3/split_block/',
     license='MIT',
     author='David Chen',
